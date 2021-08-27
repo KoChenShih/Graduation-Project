@@ -1,15 +1,13 @@
 
 function example()
 
-data1 = multibandread('C:\Users\hy728\Desktop\專題資料\專tea20210812\20210812_BlackA_4.0f_6.5ms_corrected.raw',[333,400,150],'float32=>float32',0,'bsq','ieee-le');
+data1 = multibandread('D:\畢專檔案2\20210812_BlackA_4.0f_6.5ms_corrected.raw',[333,400,150],'float32=>float32',0,'bsq','ieee-le');
 data1 = double(data1);
-data2 = multibandread('C:\Users\hy728\Desktop\專題資料\專tea20210812\20210812_GreenA_4.0f_6.5ms_corrected.raw',[333,400,150],'float32=>float32',0,'bsq','ieee-le');
+data2 = multibandread('D:\畢專檔案2\20210812_GreenA_4.0f_6.5ms_corrected.raw',[333,400,150],'float32=>float32',0,'bsq','ieee-le');
 data2 = double(data2);
 
-
-
 %open file
-fid=fopen('C:\Users\hy728\Desktop\專題資料\專tea20210812\20210812_BlackA_4.0f_6.5ms_corrected.hdr');
+fid=fopen('D:\畢專檔案2\20210812_BlackA_4.0f_6.5ms_corrected.hdr');
 info=fread(fid,'char=>char');
 info=info';
 fclose(fid);
@@ -78,8 +76,6 @@ f2 = figure('visible','off');
 f2.Position = [100 200 800 500];
 f2.Name = 'Result';
 
-
-
 function callBack(object,event)
     t = gca;
     mousePos = get(gca,'CurrentPoint');
@@ -130,23 +126,16 @@ function callBack(object,event)
         
     else
         d1(time,:) = sum( sum( I([y-ee y y+ee],[x-ee x x+ee],:) ) )/(e*e);
-    end
-    
-    
-    
+    end 
     
  figure(f2);
         plot(wavelength,d1(time,:),'Color',map(time,:)); 
-  
-
-    
+ 
     grid on
     hold on
     time = time + 1;  
     
 end
-
-
 
 end
 
